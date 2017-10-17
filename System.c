@@ -24,24 +24,24 @@
   }
 
 void removeN(BNode **Btree, char empName[]){
-  BNode *temp = NULL;
-  if(!(*Btree)){
-    temp = (BNode *)malloc(sizeof(BNode));
-    *temp = Btree;
-  check:
-    if(temp -> name == empName)
-      temp = NULL;
+  //BNode *temp = NULL;
+  if((*Btree)){
+    //temp = (BNode *)malloc(sizeof(BNode));
+    if((*Btree) -> name == empName){//if we are at the node that we want to delete
+      printf("test\n");//debug tool
+      free(*Btree);//delete this node 
+      (*Btree) = NULL;//and make this pointer equal to null
+    }
     
-    if(nameValue(empName) < (nameValue((*Btree) -> name))){
-      temp -> left;
-      goto check;
+    if(nameValue(empName) < (nameValue((*Btree) -> name))){//compare values to determine where to go down
+      printf("testleft\n");//debug tool
+      removeN(&(*Btree) -> left, empName);//move to the left of the tree and check again
     }
     if(nameValue(empName) > (nameValue((*Btree) -> name))){
-       temp -> right;
-       goto check;
+      printf("testright\n");
+      removeN(&(*Btree) -> right, empName);//move to right of the tree and check again
     }
   }
-  *Btree = temp;
 }
      
 
