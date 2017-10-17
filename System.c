@@ -1,39 +1,35 @@
 #include<string.h>
-
-typedef struct _BNode{
-  char name[500];
-  struct _BNode *right, *left;
-} BNode;
+#include<stdio.h>
+#include<stdlib.h>
+#include "bst.h"
 
 
   void insert(BNode** Btree, char empName[]){
-    node *temp = NULL;
+    BNode *temp = NULL;
 
     if(!(*Btree)){   //if empty create a the root
-      temp = (BNode *)malloc(sizeof(Bnode));
+      temp = (BNode *)malloc(sizeof(BNode));
       temp -> left = temp -> right =NULL; //since root is set is childs become null
-      temp -> name = empName; //put the name of employee on the node
+      strcpy(temp -> name, empName); //put the name of employee on the node
       *Btree = temp; //point to the newly created root
       return;
     }
 
-    if(nameValue(empName) < (*Btree) -> nameValue(name))
+    if(nameValue(empName) < (nameValue((*Btree) -> name)))
       insert(&(*Btree) -> left, empName);
 
-    if(nameValue(empName) > (*Btree) -> nameValue(name))
+    if(nameValue(empName) > (nameValue((*Btree) -> name)))
       insert(&(*Btree) -> right, empName);
 
   }
 
 void printEmployeeList(BNode *Btree){
   if(Btree){
-    printEmployeeList(Btree -> right);//print inOrder since we wnat the list on alpahabetical order
+    printEmployeeList(Btree -> left);//print inOrder since we wnat the list on alpahabetical order
     printf("%s\n",Btree -> name);
-    printEmployeeList(Btree -> left);
+    printEmployeeList(Btree -> right);
   }
-  else{
-    printf("No employees found on the database.");
-  }
+  
 }
 
 int nameValue(char name []){

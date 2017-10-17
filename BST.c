@@ -1,46 +1,46 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "bst.h"
+#include "System.c"
 
 //typedef struct BNode node;
 int main(){
 
   char employeeName[53];
   BNode *root = NULL;
-  int option;
-  while(option !=4){
-
-    printf("\nChoose option:\n");
+  char option;
+  
+ select: printf("\nChoose option:\n");
     printf("1) Add Employee\n");
     printf("2) Remove Employee\n");
     printf("3) List Employees\n");
     printf("4) Exit\n");
-    scanf("%d",option);
+    scanf(" %c",&option);
     switch(option){
-    case 1: printf("Enter the name of employee you want to add:\n");
+    case '1':
+      printf("Enter the name of employee you want to add:\n");
       scanf(" %s", employeeName);
-      insertN(&root, employeeName);
+      insert(&root, employeeName);
+      goto select;
       break;
 
-    case 2: printf("Enter the name of employee you wish to delete:\n");
-      scanf("%s", employeeName);
-      //
+    case '2':
+      printf("Enter the name of employee you wish to delete:\n");
+      scanf(" %s", employeeName);
+      goto select;
       break;
 
-    case 3: printEmployeeList(root);
+    case '3':
+      printEmployeeList(root);
+      goto select;
       break;
       
-    case 4: printf("Leaving database");
+    case '4':
+      printf("Leaving database\n");
       break;
 
     }
-  }
 
   return 0;
 
 }
-  
-  
-  
-  
-
-  
