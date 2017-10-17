@@ -5,8 +5,8 @@ bstDemo: Main.o System.o
 Main.o: BST.c
 	cc -c BST.c
 
-System.o:bst.h
-	cc -c bst.h
+System.o:System.c
+	cc -c System.c
 
 clean:
 	rm -f *o bstDemo
