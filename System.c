@@ -23,13 +23,34 @@
 
   }
 
+void removeN(BNode **Btree, char empName[]){
+  BNode *temp = NULL;
+  if(!(*Btree)){
+    temp = (BNode *)malloc(sizeof(BNode));
+    *temp = Btree;
+  check:
+    if(temp -> name == empName)
+      temp = NULL;
+    
+    if(nameValue(empName) < (nameValue((*Btree) -> name))){
+      temp -> left;
+      goto check;
+    }
+    if(nameValue(empName) > (nameValue((*Btree) -> name))){
+       temp -> right;
+       goto check;
+    }
+  }
+  *Btree = temp;
+}
+     
+
 void printEmployeeList(BNode *Btree){
   if(Btree){
     printEmployeeList(Btree -> left);//print inOrder since we wnat the list on alpahabetical order
     printf("%s\n",Btree -> name);
     printEmployeeList(Btree -> right);
   }
-  
 }
 
 int nameValue(char name []){

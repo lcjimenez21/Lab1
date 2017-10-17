@@ -11,7 +11,7 @@ void insert(BNode **Btree, char empName[]);
 
 void printEmployeeList(BNode *Btree);
 
-void remove(BNode **Btree, char empName[]);
+void removeN(BNode **Btree, char empName[]);
 
 int nameValue(char name []);
 

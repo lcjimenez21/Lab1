@@ -27,6 +27,7 @@ int main(){
     case '2':
       printf("Enter the name of employee you wish to delete:\n");
       scanf(" %s", employeeName);
+      removeN(&root, employeeName);
       goto select;
       break;
 
